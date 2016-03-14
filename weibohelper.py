@@ -62,7 +62,7 @@ class WeiBoHelper(object):
         action = selector.xpath('//form[@method="post"]/@action')[0]
         cap_id = selector.xpath('//input[@name="capId"]/@value')[0]
         img = selector.xpath('//img/@src')[0]   # 获取验证码图片
-        print img
+        print img  # 将验证码图片输出到控制台，复制到firefox浏览器访问获得验证码code
         code = raw_input()  # 输入验证码
         self.new_url = self.url_login + action
         _data = {
