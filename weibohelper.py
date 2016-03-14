@@ -16,7 +16,7 @@ class MailHelper(object):
 
     def __init__(self):
 
-        self.mail_host = "xxxxxx"     # 设置服务器
+        self.mail_host = "xxxxxx"     # 设置邮箱服务器
         self.mail_user = "xxxxx"     # 用户名
         self.mail_pass_w = "xxxx"    # 密码
         self.mail_postfix = "xxxx"  # 发件箱的后缀
@@ -28,7 +28,7 @@ class MailHelper(object):
         msg['From'] = me
         msg['To'] = ";".join(to_list)
         try:
-            server = smtplib.SMTP()     # 开启邮件服务
+            server = smtplib.SMTP()     # 开启邮箱服务
             server.connect(self.mail_host)
             server.login(self.mail_user, self.mail_pass_w)
             server.sendmail(me, to_list, msg.as_string())
