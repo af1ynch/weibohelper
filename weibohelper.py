@@ -18,7 +18,7 @@ class MailHelper(object):
 
         self.mail_host = "xxxxxx"     # 设置服务器
         self.mail_user = "xxxxx"     # 用户名
-        self.mail_passw = "xxxx"    # 密码
+        self.mail_pass_w = "xxxx"    # 密码
         self.mail_postfix = "xxxx"  # 发件箱的后缀
 
     def send_mail(self, to_list, sub, _content):
@@ -30,7 +30,7 @@ class MailHelper(object):
         try:
             server = smtplib.SMTP()     # 开启邮件服务
             server.connect(self.mail_host)
-            server.login(self.mail_user, self.mail_passw)
+            server.login(self.mail_user, self.mail_pass_w)
             server.sendmail(me, to_list, msg.as_string())
             server.close()
             return True
