@@ -29,9 +29,9 @@ class MailHelper(object):
         msg['To'] = ";".join(to_list)
         try:
             server = smtplib.SMTP()     # 开启邮箱服务
-            server.connect(self.mail_host)
-            server.login(self.mail_user, self.mail_pass_w)
-            server.sendmail(me, to_list, msg.as_string())
+            server.connect(self.mail_host)  # 连接邮箱
+            server.login(self.mail_user, self.mail_pass_w)  # 登陆邮箱
+            server.sendmail(me, to_list, msg.as_string())  # 发送邮件
             server.close()
             return True
         except Exception, e:
@@ -54,11 +54,11 @@ class WeiBoHelper(object):
 
     def get_data(self, html):
 
-        # 爬取模拟登录微博时要提交的表单数据
+        # 爬取模拟登录微博时要提交的表单数据,可以用浏览器debug工具，查看登陆所需要的表单数据
 
         selector = etree.HTML(html)
-        password = selector.xpath('//input[@type="password"]/@name')[0]
-        vk = selector.xpath('//input[@name="vk"]/@value')[0]
+        password = selector.xpath('//input[@type="password"]/@name')[0]  # 登陆提交的数据中,密码所对应的key是变化的,因此需在登陆页面动态获取
+        vk = selector.xpath('//input[@name="vk"]/@value')[0]  
         action = selector.xpath('//form[@method="post"]/@action')[0]
         cap_id = selector.xpath('//input[@name="capId"]/@value')[0]
         img = selector.xpath('//img/@src')[0]   # 获取验证码图片
